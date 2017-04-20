@@ -5,7 +5,11 @@
  */
 package beans;
 
+import entities.StufutUsuario;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 
 /**
  *
@@ -14,6 +18,24 @@ import javax.ejb.Stateless;
 @Stateless
 public class StufutEJB {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceUnit
+    EntityManagerFactory emf;
+
+    public boolean existUSer(StufutUsuario u) {
+        EntityManager em = emf.createEntityManager();
+        StufutUsuario encontrada = em.find(StufutUsuario.class, u.getEmail());
+        em.close();
+        return encontrada != null;
+    }
+
+    public boolean altaUser(StufutUsuario u) {
+        if (!existUSer(u)) {
+            EntityManager em = emf.createEntityManager();
+            em.persist(u);
+            em.close();
+            return true;
+        }
+        return false;
+    }
+
 }
