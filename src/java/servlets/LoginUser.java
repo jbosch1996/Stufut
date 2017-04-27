@@ -10,6 +10,7 @@ import entities.StufutUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +23,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "LoginUser", urlPatterns = {"/LoginUser"})
 public class LoginUser extends HttpServlet {
-        @EJB
-        StufutEJB miEjb;
+
+    @EJB
+    StufutEJB miEjb;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,19 +42,18 @@ public class LoginUser extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             // Recogemos los datos del formulario
-		String un=request.getParameter("usrname");
-		String pw=request.getParameter("psw");
-		
-		if(un.equals("admin") && pw.equals("admin"))
-		{
-			response.sendRedirect("homeadmin.html");
-			return;
-		}
-		else
-		{
-			response.sendRedirect("error.html");
-			return;
-		}
+            String un = request.getParameter("usrname");
+            String pw = request.getParameter("psw");
+
+            if (miEjb.loginUser(un, pw) == true) {
+                out.println("Logeado");
+                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                rs.include(request, response);
+            } else {
+                out.println("No Logeado");
+                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                rs.include(request, response);
+            }
 
         }
     }

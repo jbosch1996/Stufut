@@ -22,9 +22,28 @@ public class StufutEJB {
     @PersistenceUnit
     EntityManagerFactory emf;
 
+    // validar usuario 
+    // recibe 2 string, user y pass
+    // trae al usuario por nombre de usua
+    // si el usuario q trae es null devuelve falso
+    // sino comparas pass con el pass del usuario
+    // si es correcto true y sino false
+    
+    public boolean loginUser(String nombreusu,String pass) {
+        EntityManager em = emf.createEntityManager();
+        StufutUsuario encontrada = em.find(StufutUsuario.class, nombreusu);
+        if(encontrada != null){
+            if(pass.equals(encontrada.getPass())){
+                return true;
+            }
+        }
+        em.close();
+        return false;
+    }
+    
     public boolean existUser(StufutUsuario u) {
         EntityManager em = emf.createEntityManager();
-        StufutUsuario encontrada = em.find(StufutUsuario.class, u.getEmail());
+        StufutUsuario encontrada = em.find(StufutUsuario.class, u.getNombreusu());
         em.close();
         return encontrada != null;
     }

@@ -1,12 +1,14 @@
+<%-- 
+    Document   : index
+    Created on : 27-abr-2017, 19:07:49
+    Author     : 53298857Z
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>STUFUT</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -41,11 +43,11 @@ and open the template in the editor.
                     <form action="LoginUser" method="POST">
                     <div class="form-group">
                         <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nombre de Usuario</label>
-                        <input type="text" class="form-control" name="usrname" placeholder="Introduce Usuario">
+                        <input type="text" class="form-control" name="usrname" placeholder="Introduce Usuario" required>
                     </div>
                 <div class="form-group">
                     <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                    <input type="password" class="form-control" name="psw" placeholder="Enter password">
+                    <input type="password" class="form-control" name="psw" placeholder="Enter password" required>
                 </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>

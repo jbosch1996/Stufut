@@ -66,7 +66,9 @@ public class StufutUsuario implements Serializable {
 
     public StufutUsuario() {
     }
-
+     public StufutUsuario(String nombreusu) {
+        this.nombreusu = nombreusu;
+    }
     public StufutUsuario(String nombreusu,String email,String pass,String nombre,String apellido) {
         this.nombreusu = nombreusu;
         this.email = email;

@@ -54,7 +54,7 @@ public class NewUser extends HttpServlet {
             StufutUsuario u = new StufutUsuario(usrname,email,psw,nombre,apellido);
             if (miEjb.altaUser(u)) {
                 out.println("User dado de alta.");
-                out.println("<a href='index.html'>Regresar</a>");
+                out.println("<a href='index.jsp'>Regresar</a>");
             } else {
                 out.println("Ya existe un User con ese nombre.");
             }
