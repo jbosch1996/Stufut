@@ -1,11 +1,9 @@
-<%-- 
-    Document   : homeadmin
-    Created on : 27-abr-2017, 19:08:04
-    Author     : 53298857Z
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -16,11 +14,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-
         <div class="jumbotron text-center">
             <h1>Admin Page</h1>
         </div>
-
     <center>
         <div class="container">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Alta Carta</button>
@@ -29,14 +25,18 @@
     <!-- Alta Carta -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Alta Carta</h4>
+                </div>
                 <div class="modal-body">
-                    <form action="AltaCarta" method="POST">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Alta Carta</h4>
+                    <form action="NewCarta" method="POST">
+                        <div class="form-group">
+                            <label for="foto"><span class="glyphicon glyphicon-user"></span> Foto</label>
+                            <input type="file" class="file" id="foto" name="foto" >
                         </div>
                         <div class="form-group">
                             <label for="nombre"><span class="glyphicon glyphicon-user"></span> Nombre</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label for="media"><span class="glyphicon glyphicon-eye-open"></span> Media</label>
-                            <input type="text" class="form-control" id="media" name="media" placeholder="Introduce la Media">
+                            <input type="number" class="form-control" id="media" name="media" placeholder="Introduce la Media">
                         </div>
                         <div class="form-group">
                             <label for="posicion"><span class="glyphicon glyphicon-eye-open"></span> Posicion</label>
@@ -80,35 +80,20 @@
                         </div>
                         <div class="form-group">
                             <label for="fisico"><span class="glyphicon glyphicon-eye-open"></span> Fisico</label>
-                            <input type="text" class="form-control" id="fisico" name="fisico" placeholder="Introduce el FÃ­sico">
+                            <input type="text" class="form-control" id="fisico" name="fisico" placeholder="Introduce el Físico">
                         </div>
                         <div class="form-group">
                             <label for="tipo"><span class="glyphicon glyphicon-eye-open"></span> Tipo</label>
                             <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Introduce el Tipo">
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>  
         </div>
     </div>
 </body>
 </html>
-<!--(idcarta int not null primary key AUTO_INCREMENT,
-nombre varchar (20),
-media int,
-posicion varchar (20),
-equipo varchar (20),
-pais varchar (20),
-velocidad int,
-disparo int,
-pase int,
-regate int,
-defensa int,
-fisico int,
-tipo varchar (20),
-likes int,
-dislikes int);-->

@@ -99,14 +99,8 @@ public class Carta implements Serializable {
         this.idcarta = idcarta;
     }
 
-        public Carta(String nombre, Integer media, String posicion) {
-        this.nombre = nombre;
-        this.media = media;
-        this.posicion = posicion;
-
-    }
-    
-    public Carta(String nombre, Integer media, String posicion, String equipo, String pais, Integer velocidad, Integer disparo, Integer pase, Integer regate, Integer defensa, Integer fisico, String tipo, Integer likes, Integer dislikes) {
+    public Carta(Integer idcarta,String nombre, Integer media, String posicion, String equipo, String pais, Integer velocidad, Integer disparo, Integer pase, Integer regate, Integer defensa, Integer fisico, String tipo, Integer likes, Integer dislikes) {
+        this.idcarta = idcarta;
         this.nombre = nombre;
         this.media = media;
         this.posicion = posicion;
@@ -122,7 +116,6 @@ public class Carta implements Serializable {
         this.likes = likes;
         this.dislikes = dislikes;
     }
-
     public Integer getIdcarta() {
         return idcarta;
     }
@@ -285,5 +278,5 @@ public class Carta implements Serializable {
     public String toString() {
         return "entities.Carta[ idcarta=" + idcarta + " ]";
     }
-    
+
 }
