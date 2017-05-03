@@ -30,7 +30,7 @@ public class StufutEJB {
     // si es correcto true y sino false
     
     public boolean loginUser(String nombreusu,String pass) {
-        EntityManager em = emf.createEntityManager();
+            EntityManager em = emf.createEntityManager();
         StufutUsuario encontrada = em.find(StufutUsuario.class, nombreusu);
         if(encontrada != null){
             if(pass.equals(encontrada.getPass())){

@@ -44,13 +44,15 @@ public class LoginUser extends HttpServlet {
             // Recogemos los datos del formulario
             String un = request.getParameter("usrname");
             String pw = request.getParameter("psw");
-
             if (miEjb.loginUser(un, pw) == true) {
-                out.println("Logeado");
-                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
-                rs.include(request, response);
+                if (un.equalsIgnoreCase("admin")) {
+                    RequestDispatcher rs = request.getRequestDispatcher("homeadmin.jsp");
+                    rs.include(request, response) ;
+                } else {
+                    RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                    rs.include(request, response);
+                }
             } else {
-                out.println("No Logeado");
                 RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
                 rs.include(request, response);
             }
