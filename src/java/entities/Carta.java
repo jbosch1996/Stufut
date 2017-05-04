@@ -6,9 +6,7 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,15 +14,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 53298857Z
+ * @author 41013277E
  */
 @Entity
 @Table(name = "carta")
@@ -45,7 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Carta.findByFisico", query = "SELECT c FROM Carta c WHERE c.fisico = :fisico"),
     @NamedQuery(name = "Carta.findByTipo", query = "SELECT c FROM Carta c WHERE c.tipo = :tipo"),
     @NamedQuery(name = "Carta.findByLikes", query = "SELECT c FROM Carta c WHERE c.likes = :likes"),
-    @NamedQuery(name = "Carta.findByDislikes", query = "SELECT c FROM Carta c WHERE c.dislikes = :dislikes")})
+    @NamedQuery(name = "Carta.findByDislikes", query = "SELECT c FROM Carta c WHERE c.dislikes = :dislikes"),
+    @NamedQuery(name = "Carta.findByFoto", query = "SELECT c FROM Carta c WHERE c.foto = :foto")})
 public class Carta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -87,10 +84,9 @@ public class Carta implements Serializable {
     private Integer likes;
     @Column(name = "dislikes")
     private Integer dislikes;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcarta")
-    private Collection<ComentariosCartaUsuario> comentariosCartaUsuarioCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcarta")
-    private Collection<MazoCarta> mazoCartaCollection;
+    @Size(max = 200)
+    @Column(name = "foto")
+    private String foto;
 
     public Carta() {
     }
@@ -99,7 +95,12 @@ public class Carta implements Serializable {
         this.idcarta = idcarta;
     }
 
-    public Carta(Integer idcarta,String nombre, Integer media, String posicion, String equipo, String pais, Integer velocidad, Integer disparo, Integer pase, Integer regate, Integer defensa, Integer fisico, String tipo, Integer likes, Integer dislikes) {
+    public Carta(Integer idcarta, String nombre) {
+        this.idcarta = idcarta;
+        this.nombre = nombre;
+    }
+
+    public Carta(Integer idcarta, String nombre, Integer media, String posicion, String equipo, String pais, Integer velocidad, Integer disparo, Integer pase, Integer regate, Integer defensa, Integer fisico, String tipo, Integer likes, Integer dislikes) {
         this.idcarta = idcarta;
         this.nombre = nombre;
         this.media = media;
@@ -116,6 +117,7 @@ public class Carta implements Serializable {
         this.likes = likes;
         this.dislikes = dislikes;
     }
+
     public Integer getIdcarta() {
         return idcarta;
     }
@@ -236,22 +238,12 @@ public class Carta implements Serializable {
         this.dislikes = dislikes;
     }
 
-    @XmlTransient
-    public Collection<ComentariosCartaUsuario> getComentariosCartaUsuarioCollection() {
-        return comentariosCartaUsuarioCollection;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setComentariosCartaUsuarioCollection(Collection<ComentariosCartaUsuario> comentariosCartaUsuarioCollection) {
-        this.comentariosCartaUsuarioCollection = comentariosCartaUsuarioCollection;
-    }
-
-    @XmlTransient
-    public Collection<MazoCarta> getMazoCartaCollection() {
-        return mazoCartaCollection;
-    }
-
-    public void setMazoCartaCollection(Collection<MazoCarta> mazoCartaCollection) {
-        this.mazoCartaCollection = mazoCartaCollection;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     @Override

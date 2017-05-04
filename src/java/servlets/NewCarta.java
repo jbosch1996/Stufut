@@ -15,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import org.apache.commons.fileupload.FileItem;
+//import org.apache.commons.fileupload.FileUploadException;
+//import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+//import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -37,6 +41,12 @@ public class NewCarta extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+//        String contentType = request.getContentType();
+//         if ((contentType.contains("multipart/form-data"))) {
+//             DiskFileItemFactory factory = new DiskFileItemFactory();
+//         }
+       
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -46,9 +56,9 @@ public class NewCarta extends HttpServlet {
             out.println("<title>Nueva Carta</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("entro");
             // Recogemos los datos del formulario
             Integer idcarta = 0;
+            String foto =  request.getParameter("foto");
             String nombre = request.getParameter("nombre");
             Integer media = Integer.parseInt(request.getParameter("media"));
             String pos = request.getParameter("posicion");
@@ -65,7 +75,8 @@ public class NewCarta extends HttpServlet {
             Integer dislike = 0;
             
             
-            Carta c = new Carta(idcarta,nombre,media,pos,equipo,pais,velocidad,disparo,pase,regate,defensa,fisico,tipo,like,dislike);
+           Carta c = new Carta(idcarta,nombre,media,pos,equipo,pais,velocidad,disparo,pase,regate,defensa,fisico,tipo,like,dislike);
+
             if (miEjb.insertCarta(c)) {
                 out.println("Carta dada de alta.");
             } else {
