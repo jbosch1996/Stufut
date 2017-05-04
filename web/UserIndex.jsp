@@ -16,26 +16,28 @@ and open the template in the editor.
     <body>
         <style>
             body {
-  font-family: Arial, sans-serif;
-  background: url(http://www.fifplay.com/images/public/fifa-17.jpg) no-repeat;
-  background-size: cover;
-  height: 100vh;
-}
+                font-family: Arial, sans-serif;
+                background: url(http://www.fifplay.com/images/public/fifa-17.jpg) no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
         </style>
         <div class="jumbotron text-center"> 
-            <h1>Página inicio usuario</h1>      
+            <h1>STUFUT</h1>  
+            <%
+                String un = (String) session.getAttribute("usrname");
+                if (un != null) {
+            %>
+            <p>Usuario Logeado:  <%=un%></p>
+            <% } else {
+            %>
+            <h1>No hay usuario validado.</h1>
+            <%
+            }%>
+            <form action="CerrarSesion" method="POST">
+                <button type="submit" class="btn btn-success">Logout</button>
+            </form>
         </div>
-        <%
-            String un = (String) session.getAttribute("usrname");
-            if (un != null) {
-        %>
-        <h1>Hello <%=un%></h1>
-        <% } else {
-        %>
-        <h1>No hay usuario validado.</h1>
-        <%
-                }%>
-
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle"
                     data-toggle="dropdown">
