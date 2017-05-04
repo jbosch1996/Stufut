@@ -10,6 +10,7 @@ import entities.StufutUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,8 @@ public class NewUser extends HttpServlet {
 
         @EJB
         StufutEJB miEjb;
+        public static final String STATUS_OK = "Carta Creada";
+        public static final String STATUS_ERROR = "Carta Error";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,14 +41,6 @@ public class NewUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Nuevo Entrenador</title>");
-            out.println("</head>");
-            out.println("<body>");
-            // Recogemos los datos del formulario
             String usrname = request.getParameter("usrname");
             String email = request.getParameter("email");
             String psw = request.getParameter("psw");
@@ -53,16 +48,12 @@ public class NewUser extends HttpServlet {
             String apellido = request.getParameter("apellido");
             StufutUsuario u = new StufutUsuario(usrname,email,psw,nombre,apellido);
             if (miEjb.altaUser(u)) {
-                out.println("User dado de alta.");
-                out.println("<a href='index.jsp'>Regresar</a>");
-            } else {
-                out.println("Ya existe un User con ese nombre.");
+                request.setAttribute("status", STATUS_OK);
+//                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+            }else{
+                request.setAttribute("status", STATUS_ERROR);
             }
-            out.println("</body>");
-            out.println("</html>");
-            out.println("</body>");
-            out.println("</html>");
-
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 

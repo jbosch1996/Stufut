@@ -45,11 +45,12 @@ public class LoginUser extends HttpServlet {
             String un = request.getParameter("usrname");
             String pw = request.getParameter("psw");
             if (miEjb.loginUser(un, pw) == true) {
+                request.getSession(true).setAttribute("usrname", un);
                 if (un.equalsIgnoreCase("admin")) {
                     RequestDispatcher rs = request.getRequestDispatcher("homeadmin.jsp");
                     rs.include(request, response) ;
                 } else {
-                    RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
+                    RequestDispatcher rs = request.getRequestDispatcher("UserIndex.jsp");
                     rs.include(request, response);
                 }
             } else {
