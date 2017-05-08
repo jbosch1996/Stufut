@@ -1,48 +1,13 @@
-<%@page import="entities.Carta"%>
-<%@page import="java.util.List"%>
-<!DOCTYPE html>
-<!--
+/*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Home</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="newcss.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background: url(http://www.fifplay.com/images/public/fifa-17.jpg) no-repeat;
-                background-size: cover;
-                height: 100vh;
-            }
-        </style>
-        <div class="jumbotron text-center"> 
-            <h1>STUFUT</h1>  
-            <%
-                String un = (String) session.getAttribute("usrname");
-                if (un != null) {
-            %>
-            <p>Usuario Logeado:  <%=un%></p>
-            <% } else {
-            %>
-            <h1>No hay usuario validado.</h1>
-            <%
-                }%>
-            <form action="CerrarSesion" method="POST">
-                <button type="submit" class="btn btn-success">Logout</button>
-            </form>
-        </div>
+*/
+/* 
+    Created on : 08-may-2017, 20:43:37
+    Author     : 53298857Z
+*/
 
-        <style>
             .snip1581 {
                 font-family: 'Poppins:400,700', Arial, sans-serif;
                 position: relative;
@@ -117,19 +82,3 @@ and open the template in the editor.
                 background-color: #212121;
                 text-align: center;
             }
-        </style>
-    <center>
-        <figure class="snip1581"><img src="http://www.mundodeportivo.com/r/GODO/MD/p2/Futbol/Imagenes/2014/03/19/MD_54403258441_54403268803.jpg"  width="350px" heght="300px" alt="profile-sample2"/>
-            <figcaption>
-                <h3 class="title1">Equipos</h3>
-            </figcaption><a href="#"></a>
-        </figure>
-         <figure class="snip1581"><img src="https://scontent-sjc2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c80.0.919.919/15337085_349055165453499_5098129891203743744_n.jpg?ig_cache_key=MTQwMjI4Mzg4NjUwNzQzMDIxNg%3D%3D.2.c width="350px" heght="300px" alt="profile-sample2"/>
-            <figcaption>
-                <h3 class="title1">Jugadores</h3>
-            </figcaption><a href="#"></a>
-        </figure>
-    </center>
-
-</body>
-</html>

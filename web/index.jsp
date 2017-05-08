@@ -44,7 +44,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Registro</button>
         </div>
 
-        <img src="img/ultimate.png" alt=""/>    
+        <!--<img src="img/ultimate.png" alt=""/>-->    
     </center> 
     <!-- Login -->
     <div id="myModal" class="modal fade" role="dialog">

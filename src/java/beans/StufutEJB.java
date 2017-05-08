@@ -77,4 +77,7 @@ public class StufutEJB {
         return !cartas.isEmpty();
     }
 
+    public List<Carta> selectAllCarta() {
+        return emf.createEntityManager().createNamedQuery("Carta.findAll").getResultList();
+    }
 }
