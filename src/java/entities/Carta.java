@@ -95,13 +95,8 @@ public class Carta implements Serializable {
         this.idcarta = idcarta;
     }
 
-    public Carta(Integer idcarta, String nombre) {
-        this.idcarta = idcarta;
-        this.nombre = nombre;
-    }
-
-    public Carta(Integer idcarta, String nombre, Integer media, String posicion, String equipo, String pais, Integer velocidad, Integer disparo, Integer pase, Integer regate, Integer defensa, Integer fisico, String tipo, Integer likes, Integer dislikes) {
-        this.idcarta = idcarta;
+    public Carta(Integer idcarta,String nombre, Integer media, String posicion, String equipo, String pais, Integer velocidad, Integer disparo, Integer pase, Integer regate, Integer defensa, Integer fisico, String tipo, Integer likes, Integer dislikes) {
+        this.idcarta = 0;
         this.nombre = nombre;
         this.media = media;
         this.posicion = posicion;

@@ -16,6 +16,16 @@ and open the template in the editor.
     <body>
         <div class="jumbotron text-center">
             <h1>Admin Page</h1>
+            <%
+                String un = (String) session.getAttribute("usrname");
+                if (un != null) {
+            %>
+            <h1>Hello <%=un%></h1>
+            <% } else {
+            %>
+            <h1>No hay usuario validado.</h1>
+            <%
+            }%>
         </div>
     <center>
         <div class="container">
