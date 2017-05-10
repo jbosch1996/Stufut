@@ -6,6 +6,7 @@
 package beans;
 
 import entities.Carta;
+import entities.Mazo;
 import entities.StufutUsuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -79,5 +80,9 @@ public class StufutEJB {
 
     public List<Carta> selectAllCarta() {
         return emf.createEntityManager().createNamedQuery("Carta.findAll").getResultList();
+    }
+
+    public List<Mazo> selectAllMazo() {
+        return emf.createEntityManager().createNamedQuery("Mazo.findAll").getResultList();
     }
 }

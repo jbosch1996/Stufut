@@ -122,7 +122,7 @@ and open the template in the editor.
         <figure class="snip1581"><img src="http://www.mundodeportivo.com/r/GODO/MD/p2/Futbol/Imagenes/2014/03/19/MD_54403258441_54403268803.jpg"  width="350px" heght="300px" alt="profile-sample2"/>
             <figcaption>
                 <h3 class="title1">Equipos</h3>
-            </figcaption><a href="#"></a>
+            </figcaption><a href="AllMazos"></a>
         </figure>
          <figure class="snip1581"><img src="https://scontent-sjc2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c80.0.919.919/15337085_349055165453499_5098129891203743744_n.jpg?ig_cache_key=MTQwMjI4Mzg4NjUwNzQzMDIxNg%3D%3D.2.c width="350px" heght="300px" alt="profile-sample2"/>
             <figcaption>
