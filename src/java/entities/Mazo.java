@@ -68,6 +68,15 @@ public class Mazo implements Serializable {
     public Mazo() {
     }
 
+    public Mazo(Integer idmazo, String nombre, Integer likes, StufutUsuario nombreusu) {
+        this.idmazo = 0;
+        this.nombre = nombre;
+        this.likes = likes;
+        this.nombreusu = nombreusu;
+    }
+
+    
+    
     public Mazo(Integer idmazo) {
         this.idmazo = idmazo;
     }

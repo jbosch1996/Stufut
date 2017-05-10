@@ -1,5 +1,6 @@
 <%@page import="entities.Carta"%>
 <%@page import="java.util.List"%>
+<%@page import="servlets.NewMazo"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -26,9 +27,17 @@ and open the template in the editor.
             }
         </style>
         <div class="jumbotron text-center"> 
-            <h1>STUFUT</h1>  
+            <h1>STUFUT</h1>
+            <%
+                String statusmazo = (String) request.getAttribute("statusmazo");
+                if (statusmazo != null) {
+                            if (statusmazo.equals(NewMazo.STATUS_OK)) { %>
+            <p>Mazo creado correctamente</p>
+            <% }
+            }%>
             <%
                 String un = (String) session.getAttribute("usrname");
+                
                 if (un != null) {
             %>
             <p>Usuario Logeado:  <%=un%></p>
@@ -37,6 +46,43 @@ and open the template in the editor.
             <h1>No hay usuario validado.</h1>
             <%
                 }%>
+
+            <center>
+                <div class="container">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Crear Mazo</button>
+                </div>
+            </center> 
+
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Alta Carta</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="NewMazo" method="POST">
+                                
+                                    <input type="text" class="form-control" id="usu" name="usu" value="<%=un%>" >
+                                <div class="form-group">
+                                    <label for="nombremazo"><span class="glyphicon glyphicon-user"></span> Nombre</label>
+                                    <input type="text" class="form-control" id="nombremazo" name="nombremazo" placeholder="Introduce Nombre del Mazo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formacion"><span class="glyphicon glyphicon-user"></span> Formación</label>
+                                    <input type="text" class="form-control" id="formacion" name="formacion" placeholder="Introduce la Formación del Mazo">
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>  
+                </div>
+            </div>
             <form action="CerrarSesion" method="POST">
                 <button type="submit" class="btn btn-success">Logout</button>
             </form>
@@ -124,7 +170,7 @@ and open the template in the editor.
                 <h3 class="title1">Equipos</h3>
             </figcaption><a href="AllMazos"></a>
         </figure>
-         <figure class="snip1581"><img src="https://scontent-sjc2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c80.0.919.919/15337085_349055165453499_5098129891203743744_n.jpg?ig_cache_key=MTQwMjI4Mzg4NjUwNzQzMDIxNg%3D%3D.2.c width="350px" heght="300px" alt="profile-sample2"/>
+        <figure class="snip1581"><img src="https://scontent-sjc2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c80.0.919.919/15337085_349055165453499_5098129891203743744_n.jpg?ig_cache_key=MTQwMjI4Mzg4NjUwNzQzMDIxNg%3D%3D.2.c width="350px" heght="300px" alt="profile-sample2"/>
             <figcaption>
                 <h3 class="title1">Listado Jugadores</h3>
             </figcaption><a href="AllCartas"></a>

@@ -70,6 +70,24 @@ public class StufutEJB {
         return false;
     }
 
+    public boolean insertMazo(Mazo m) {
+        if (!existMazo(m)) {
+            EntityManager em = emf.createEntityManager();
+            em.persist(m);
+            em.close();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean existMazo(Mazo m) {
+        EntityManager em = emf.createEntityManager();
+//        Carta encontrado = em.find(Carta.class, c.getNombre());
+        List<Mazo> mazos = em.createNamedQuery("Carta.findByNombre").setParameter("nombre", m.getNombre()).getResultList();
+        em.close();
+        return !mazos.isEmpty();
+    }
+
     public boolean existCarta(Carta c) {
         EntityManager em = emf.createEntityManager();
 //        Carta encontrado = em.find(Carta.class, c.getNombre());
@@ -85,4 +103,10 @@ public class StufutEJB {
     public List<Mazo> selectAllMazo() {
         return emf.createEntityManager().createNamedQuery("Mazo.findAll").getResultList();
     }
+    
+        public StufutUsuario selectStufutUsuarioByName(String s) {
+        return emf.createEntityManager().find(StufutUsuario.class, s);
+    }
+    
+    
 }
