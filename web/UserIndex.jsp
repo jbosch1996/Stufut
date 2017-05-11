@@ -28,6 +28,11 @@ and open the template in the editor.
             }
         </style>
         <div class="jumbotron text-center"> 
+            <div style="float:left;">
+             <a href="index.jsp">
+                <img width="50px" height="50px "src="img/arrow-back-icon.png" alt=""/>
+            </a>
+            </div>
             <h1>STUFUT</h1>
             <%
                 String statusmazo = (String) request.getAttribute("statusmazo");

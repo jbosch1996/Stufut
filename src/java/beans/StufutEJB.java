@@ -117,4 +117,18 @@ public class StufutEJB {
         return emf.createEntityManager().find(Formacion.class, id);
     }
 
+    public Carta selectCartaById(Integer id) {
+        return emf.createEntityManager().find(Carta.class, id);
+    }
+
+    public boolean removeCarta(Carta c) {
+        EntityManager em = emf.createEntityManager();
+        Carta aux = em.find(Carta.class, c.getIdcarta());
+        if (aux != null) {
+            em.remove(aux);
+            em.close();
+            return true;
+        }
+        return false;
+    }
 }

@@ -6,11 +6,10 @@
 package servlets;
 
 import beans.StufutEJB;
-import entities.StufutUsuario;
+import entities.Carta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 53298857Z
  */
-@WebServlet(name = "LoginUser", urlPatterns = {"/LoginUser"})
-public class LoginUser extends HttpServlet {
-
-    @EJB
-    StufutEJB miEjb;
+@WebServlet(name = "BorrarCarta", urlPatterns = {"/BorrarCarta"})
+public class BorrarCarta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,29 +32,17 @@ public class LoginUser extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+      @EJB
+    StufutEJB miEjb;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            // Recogemos los datos del formulario
-            String un = request.getParameter("usrname");
-            String pw = request.getParameter("psw");
-            if (miEjb.loginUser(un, pw) == true) {
-                request.getSession(true).setAttribute("usrname", un);
-                if (un.equalsIgnoreCase("admin")) {
-                    RequestDispatcher rs = request.getRequestDispatcher("AllCartasAdmin");
-                    rs.include(request, response) ;
-                } else {
-                    RequestDispatcher rs = request.getRequestDispatcher("ListFormacion");
-                    rs.include(request, response);
+            Integer idcarta = Integer.parseInt(request.getParameter("cartaBorrar"));
+            Carta borrarCarta = miEjb.selectCartaById(idcarta);  
+                if (miEjb.removeCarta(borrarCarta)) {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
-            } else {
-                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
-                rs.include(request, response);
-            }
-
-        }
+            
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

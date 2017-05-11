@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="entities.Carta"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -15,6 +17,11 @@ and open the template in the editor.
     </head>
     <body>
         <div class="jumbotron text-center">
+            <div style="float:left;">
+             <a href="index.jsp">
+                <img width="50px" height="50px "src="img/arrow-back-icon.png" alt=""/>
+            </a>
+            </div>
             <h1>Admin Page</h1>
             <%
                 String un = (String) session.getAttribute("usrname");
@@ -25,11 +32,12 @@ and open the template in the editor.
             %>
             <h1>No hay usuario validado.</h1>
             <%
-            }%>
+                }%>
         </div>
     <center>
         <div class="container">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Alta Carta</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Borrar Carta</button>
         </div>
     </center> 
     <!-- Alta Carta -->
@@ -95,6 +103,39 @@ and open the template in the editor.
                         <div class="form-group">
                             <label for="tipo"><span class="glyphicon glyphicon-eye-open"></span> Tipo</label>
                             <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Introduce el Tipo">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <!-- Borrar Carta-->
+    <div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Borrar Carta</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="BorrarCarta" method="POST">
+                        <div class="form-group">
+                            <label for="formacion"><span class="glyphicon glyphicon-user"></span> Cartas: </label><select name="cartaBorrar">
+                                <%
+                                    List<Carta> cartas = (List<Carta>) request.getAttribute("cartas");
+                                    for (Carta carta : cartas) {
+                                %>
+                                <option value="<%= carta.getIdcarta()%>"><%= carta.getNombre()%></option>
+                                <% }
+                                %>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
