@@ -6,6 +6,7 @@
 package beans;
 
 import entities.Carta;
+import entities.Formacion;
 import entities.Mazo;
 import entities.StufutUsuario;
 import java.util.List;
@@ -103,10 +104,17 @@ public class StufutEJB {
     public List<Mazo> selectAllMazo() {
         return emf.createEntityManager().createNamedQuery("Mazo.findAll").getResultList();
     }
-    
-        public StufutUsuario selectStufutUsuarioByName(String s) {
+
+    public List<Formacion> selectAllFormaciones() {
+        return emf.createEntityManager().createNamedQuery("Formacion.findAll").getResultList();
+    }
+
+    public StufutUsuario selectStufutUsuarioByName(String s) {
         return emf.createEntityManager().find(StufutUsuario.class, s);
     }
-    
-    
+
+    public Formacion selectFormacionByIdformacion(Integer id) {
+        return emf.createEntityManager().find(Formacion.class, id);
+    }
+
 }

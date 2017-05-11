@@ -15,7 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="newcss.css" rel="stylesheet" type="text/css"/>
-        <title>JSP Page</title>
+        <title>Mazos</title>
     </head>
     <body>
         <style>
@@ -59,7 +59,6 @@
                 <td><%= mazo.getLikes()%></td>
                 <td><%= mazo.getNombreusu()%></td>
             </tr>
-        </select>
         <% }
         %>
     </table>

@@ -46,24 +46,21 @@ public class NewMazo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String nombremazo = request.getParameter("nombremazo");
-            String usu = request.getParameter("usu");
-            StufutUsuario stusu = miEjb.selectStufutUsuarioByName(usu);
-            
-            //FALTA FORMACION
-            Mazo m = new Mazo(0, nombremazo, 0,stusu);
-            if (miEjb.insertMazo(m)) {
-        
-             
-                
-                request.setAttribute("statusmazo", STATUS_OK);
-//                RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
-            } else {
-                request.setAttribute("statusmazo", STATUS_ERROR);
-            }
+        String nombremazo = request.getParameter("nombremazo");
+        String usu = request.getParameter("usu");
+        Integer idformacion = Integer.parseInt(request.getParameter("nFormacion"));
+        StufutUsuario stusu = miEjb.selectStufutUsuarioByName(usu);
+        Formacion forma = miEjb.selectFormacionByIdformacion(idformacion);
+
+        //FALTA FORMACION
+        Mazo m = new Mazo(0, nombremazo, 0, stusu, forma);
+        if (miEjb.insertMazo(m)) {
+            request.setAttribute("statusmazo", STATUS_OK);
             request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else {
+            request.setAttribute("statusmazo", STATUS_ERROR);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

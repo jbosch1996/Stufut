@@ -1,3 +1,4 @@
+<%@page import="entities.Formacion"%>
 <%@page import="entities.Carta"%>
 <%@page import="java.util.List"%>
 <%@page import="servlets.NewMazo"%>
@@ -31,13 +32,13 @@ and open the template in the editor.
             <%
                 String statusmazo = (String) request.getAttribute("statusmazo");
                 if (statusmazo != null) {
-                            if (statusmazo.equals(NewMazo.STATUS_OK)) { %>
-            <p>Mazo creado correctamente</p>
+                    if (statusmazo.equals(NewMazo.STATUS_OK)) { %>
+            <p>Mazo creado correctamente</p> 
             <% }
-            }%>
+                }%>
             <%
                 String un = (String) session.getAttribute("usrname");
-                
+
                 if (un != null) {
             %>
             <p>Usuario Logeado:  <%=un%></p>
@@ -60,19 +61,27 @@ and open the template in the editor.
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Alta Carta</h4>
+                            <h4 class="modal-title">Alta Mazo</h4>
                         </div>
                         <div class="modal-body">
                             <form action="NewMazo" method="POST">
-                                
-                                    <input type="text" class="form-control" id="usu" name="usu" value="<%=un%>" >
+
+                                <input type="hidden" class="form-control" id="usu" name="usu" value="<%=un%>" >
                                 <div class="form-group">
                                     <label for="nombremazo"><span class="glyphicon glyphicon-user"></span> Nombre</label>
-                                    <input type="text" class="form-control" id="nombremazo" name="nombremazo" placeholder="Introduce Nombre del Mazo">
+                                    <input type="text" class="form-control" id="nombremazo" name="nombremazo" placeholder="Introduce Nombre del Mazo" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formacion"><span class="glyphicon glyphicon-user"></span> Formación</label>
-                                    <input type="text" class="form-control" id="formacion" name="formacion" placeholder="Introduce la Formación del Mazo">
+                                    <%
+                                        List<Formacion> formaciones = (List<Formacion>) request.getAttribute("formacion");
+                                        for (Formacion formacion : formaciones) {
+                                    %>
+                                        <input type="radio" class="form-control" name="nFormacion" value="<%= formacion.getIdformacion()%>" required><%= formacion.getTipo()%>
+                                    <% }
+                                    %>
+                                    
+
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </form>
@@ -167,7 +176,7 @@ and open the template in the editor.
     <center>
         <figure class="snip1581"><img src="http://www.mundodeportivo.com/r/GODO/MD/p2/Futbol/Imagenes/2014/03/19/MD_54403258441_54403268803.jpg"  width="350px" heght="300px" alt="profile-sample2"/>
             <figcaption>
-                <h3 class="title1">Equipos</h3>
+                <h3 class="title1">Listado Mazos</h3>
             </figcaption><a href="AllMazos"></a>
         </figure>
         <figure class="snip1581"><img src="https://scontent-sjc2-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c80.0.919.919/15337085_349055165453499_5098129891203743744_n.jpg?ig_cache_key=MTQwMjI4Mzg4NjUwNzQzMDIxNg%3D%3D.2.c width="350px" heght="300px" alt="profile-sample2"/>
