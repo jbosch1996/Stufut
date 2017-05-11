@@ -8,6 +8,7 @@ package beans;
 import entities.Carta;
 import entities.Formacion;
 import entities.Mazo;
+import entities.MazoCarta;
 import entities.StufutUsuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -131,4 +132,23 @@ public class StufutEJB {
         }
         return false;
     }
+    
+       public List<Carta> selectAllCartas() {
+        return emf.createEntityManager().createNamedQuery("Carta.findAll").getResultList();
+    }
+
+    public Mazo selectMazoByName(String m) {
+        return emf.createEntityManager().find(Mazo.class, m);
+    }
+    
+        public boolean insertMazoCarta(MazoCarta m) {
+
+        EntityManager em = emf.createEntityManager();
+        em.persist(m);
+        em.close();
+        return true;
+
+    }
+
+
 }

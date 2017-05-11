@@ -6,11 +6,13 @@
 package servlets;
 
 import beans.StufutEJB;
+import entities.Carta;
 import entities.Formacion;
 import entities.Mazo;
 import entities.StufutUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,6 +48,12 @@ public class NewMazo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        //CARGAMOS TODAS LAS CARTAS DE LOS JUGADORES
+        List<Carta> cartas = miEjb.selectAllCartas();
+        request.setAttribute("carta", cartas);
+
+
         String nombremazo = request.getParameter("nombremazo");
         String usu = request.getParameter("usu");
         Integer idformacion = Integer.parseInt(request.getParameter("nFormacion"));
@@ -54,11 +62,18 @@ public class NewMazo extends HttpServlet {
 
         //FALTA FORMACION
         Mazo m = new Mazo(0, nombremazo, 0, stusu, forma);
+
         if (miEjb.insertMazo(m)) {
-            request.setAttribute("statusmazo", STATUS_OK);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getSession(true).setAttribute("nombremazo", nombremazo);
+
+            if (idformacion == 1) {
+                request.getRequestDispatcher("formacion1.jsp").forward(request, response);
+            } else if (idformacion == 2) {
+                request.getRequestDispatcher("formacion2.jsp").forward(request, response);
+            }
+
         } else {
-            request.setAttribute("statusmazo", STATUS_ERROR);
+
         }
 
     }

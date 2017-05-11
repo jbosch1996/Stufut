@@ -21,11 +21,11 @@
     <body>
         <style>
             body {
-  font-family: Arial, sans-serif;
-  background: url(http://www.fifplay.com/images/public/fifa-17.jpg) no-repeat;
-  background-size: cover;
-  height: 100vh;
-}
+                font-family: Arial, sans-serif;
+                background: url(http://www.fifplay.com/images/public/fifa-17.jpg) no-repeat;
+                background-size: cover;
+                height: 100vh;
+            }
         </style>
         <div class="jumbotron text-center">
             <h1>Stufut</h1>
@@ -35,7 +35,7 @@
             String status = (String) request.getAttribute("status");
             if (status != null) {
                 if (status.equals(NewUser.STATUS_OK)) { %>
-                <p>Usuario creado correctamente</p>
+        <p>Usuario creado correctamente</p>
         <% }
             }%>
     <center>
@@ -87,7 +87,11 @@
                     <h4 class="modal-title">Registro</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="NewUser" method="POST">
+                    <form action="NewUser" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file"><span class="glyphicon glyphicon-user"></span> Foto</label>
+                            <input type="file" class="form-control" name="file"  required>
+                        </div>
                         <div class="form-group">
                             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nombre de Usuario</label>
                             <input type="text" class="form-control" name="usrname" placeholder="Introduce Usuario" required>

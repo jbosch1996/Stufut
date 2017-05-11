@@ -60,6 +60,13 @@ public class MazoCarta implements Serializable {
     public MazoCarta() {
     }
 
+    public MazoCarta(Integer idmazocarta, Carta idcarta, Mazo idmazo) {
+        this.idmazocarta = idmazocarta;
+        this.idcarta = idcarta;
+        this.idmazo = idmazo;
+    }
+
+    
     public MazoCarta(Integer idmazocarta) {
         this.idmazocarta = idmazocarta;
     }
