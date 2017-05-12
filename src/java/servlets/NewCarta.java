@@ -53,7 +53,7 @@ public class NewCarta extends HttpServlet {
 
             // Recogemos los datos del formulario
             Integer idcarta = 0;
-//            String foto =  request.getParameter("foto");
+            String foto =  request.getParameter("path");
             String nombre = request.getParameter("nombre");
             Integer media = Integer.parseInt(request.getParameter("media"));
             String pos = request.getParameter("posicion");
@@ -70,7 +70,7 @@ public class NewCarta extends HttpServlet {
             Integer dislike = 0;
             
             
-           Carta c = new Carta(idcarta,nombre,media,pos,equipo,pais,velocidad,disparo,pase,regate,defensa,fisico,tipo,like,dislike);
+           Carta c = new Carta(idcarta,nombre,media,pos,equipo,pais,velocidad,disparo,pase,regate,defensa,fisico,tipo,like,dislike,foto);
 
             if (miEjb.insertCarta(c)) {
                 request.getRequestDispatcher("index.jsp").forward(request, response);

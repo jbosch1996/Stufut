@@ -41,12 +41,12 @@ and open the template in the editor.
                     <h4 class="modal-title">Alta Carta</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="NewCarta" method="POST">
+                    <form action="NewFile" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="foto"><span class="glyphicon glyphicon-user"></span> Foto</label>
                             <input type="file" class="file" id="foto" name="foto" >
                         </div>
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <label for="nombre"><span class="glyphicon glyphicon-user"></span> Nombre</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduce Nombre de la Carta">
                         </div>
@@ -93,7 +93,7 @@ and open the template in the editor.
                         <div class="form-group">
                             <label for="tipo"><span class="glyphicon glyphicon-eye-open"></span> Tipo</label>
                             <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Introduce el Tipo">
-                        </div>
+                        </div>-->
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>
