@@ -22,7 +22,7 @@ and open the template in the editor.
             body {
                 font-family: Arial, sans-serif;
                 background: url(http://estaticos.marca.com/deporte/futbol/flash/alineaciones/liga-12-13/html/imgs/nuevo_campo_315x481.jpg) no-repeat;
-                background-size: 50%;
+                background-size: 100%;
             }
         </style>
         <div class="jumbotron text-center"> 
@@ -48,10 +48,10 @@ and open the template in the editor.
         <div class="form-group">
             <!--                POR-->
             <form action="AddPlayers" method="POST">
-                 <input type="hidden" name="nombremazo" value="<%=un%>">
+                <input type="hidden" name="nombremazo" value="<%=un%>">
                 <div class="row">
                     <input type="hidden" name="idmazo" value="<%=idmazo%>">
-                    <label for="jugador1"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                    <label for="jugador1"><span class="glyphicon glyphicon-user"></span>POR</label>
                     <br>
                     <select name="jugador1">
                         <option value="" selected></option>
@@ -67,58 +67,73 @@ and open the template in the editor.
                     <!--                    DEF-->
 
                 </div>
+                <br>
+                <br>
+                <br>
                 <div class="row">
-                    <label for="jugador2"><span class="glyphicon glyphicon-user"></span> Cartas</label>
-                    <br>
-                    <select name="jugador2">
-                        <option value="" selected></option>
+                    <div class ="col-xs-3">
+                        <label for="jugador2"><span class="glyphicon glyphicon-user"></span> LD</label>
+                        <br>
+                        <select name="jugador2">
+                            <option value="" selected></option>
+                            <%
+                                for (Carta carta : cartas) {
+                            %>
+                            <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
+                            <%} %>
+                        </select>
                         <%
-                            for (Carta carta : cartas) {
                         %>
-                        <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
-                        <%} %>
-                    </select>
-                    <%
-                    %>
-
-                    <label for="jugador3"><span class="glyphicon glyphicon-user"></span> Cartas</label>
-                    <br>
-                    <select name="jugador3">
-                        <option value="" selected></option>
+                    </div>
+                    <div class ="col-xs-3">
+                        <label for="jugador3"><span class="glyphicon glyphicon-user"></span>DFC</label>
+                        <br>
+                        <select name="jugador3">
+                            <option value="" selected></option>
+                            <%
+                                for (Carta carta : cartas) {
+                            %>
+                            <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
+                            <%} %>
+                        </select>
                         <%
-                            for (Carta carta : cartas) {
                         %>
-                        <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
-                        <%} %>
-                    </select>
-                    <%
-                    %>
-                    <label for="jugador4"><span class="glyphicon glyphicon-user"></span> Cartas</label>
-                    <br>
-                    <select name="jugador4">
-                        <option value="" selected></option>
+                    </div>
+                    <div class ="col-xs-3">
+                        <label for="jugador4"><span class="glyphicon glyphicon-user"></span>DFC</label>
+                        <br>
+                        <select name="jugador4">
+                            <option value="" selected></option>
+                            <%
+                                for (Carta carta : cartas) {
+                            %>
+                            <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
+                            <%} %>
+                        </select>
                         <%
-                            for (Carta carta : cartas) {
                         %>
-                        <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
-                        <%} %>
-                    </select>
-                    <%
-                    %>
-                    <label for="jugador5"><span class="glyphicon glyphicon-user"></span> Cartas</label>
-                    <br>
-                    <select name="jugador5">
-                        <option value="" selected></option>
+                    </div>
+                    <div class ="col-xs-3">
+                        <label for="jugador5"><span class="glyphicon glyphicon-user"></span>LI</label>
+                        <br>
+                        <select name="jugador5">
+                            <option value="" selected></option>
+                            <%
+                                for (Carta carta : cartas) {
+                            %>
+                            <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
+                            <%} %>
+                        </select>
                         <%
-                            for (Carta carta : cartas) {
                         %>
-                        <option value="<%= carta.getIdcarta()%>"> <%=carta.getNombre()%></option>
-                        <%} %>
-                    </select>
-                    <%
-                    %>
-                    <div class="row">
-                        <label for="jugador6"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class ="col-xs-12">
+                        <label for="jugador6"><span class="glyphicon glyphicon-user"></span>MCD</label>
                         <br>
                         <select name="jugador6">
                             <option value="" selected></option>
@@ -130,7 +145,13 @@ and open the template in the editor.
                         </select>
                         <%
                         %>
-                        <label for="jugador7"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">  
+                    <div class ="col-xs-6">
+                        <label for="jugador7"><span class="glyphicon glyphicon-user"></span>MC</label>
                         <br>
                         <select name="jugador7">
                             <option value="" selected></option>
@@ -142,7 +163,9 @@ and open the template in the editor.
                         </select>
                         <%
                         %>
-                        <label for="jugador8"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                    </div>
+                    <div class ="col-xs-6">
+                        <label for="jugador8"><span class="glyphicon glyphicon-user"></span>MC</label>
                         <br>
                         <select name="jugador8">
                             <option value="" selected></option>
@@ -155,8 +178,16 @@ and open the template in the editor.
                         <%
                         %>
                     </div>
-                    <div class="row">
-                        <label for="jugador9"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class ="col-xs-4">
+
+                        <label for="jugador9"><span class="glyphicon glyphicon-user"></span>ED</label>
                         <br>
                         <select name="jugador9">
                             <option value="" selected></option>
@@ -168,7 +199,9 @@ and open the template in the editor.
                         </select>
                         <%
                         %>
-                        <label for="jugador10"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                    </div>
+                    <div class ="col-xs-4">
+                        <label for="jugador10"><span class="glyphicon glyphicon-user"></span>DC</label>
                         <br>
                         <select name="jugador10">
                             <option value="" selected></option>
@@ -180,7 +213,9 @@ and open the template in the editor.
                         </select>
                         <%
                         %>
-                        <label for="jugador11"><span class="glyphicon glyphicon-user"></span> Cartas</label>
+                    </div>
+                    <div class ="col-xs-4">
+                        <label for="jugador11"><span class="glyphicon glyphicon-user"></span>EI</label>
                         <br>
                         <select name="jugador11">
                             <option value="" selected></option>
@@ -193,9 +228,16 @@ and open the template in the editor.
                         <%
                         %>
                     </div>
-
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                    <br>
+                     <br>
+                      <br>
+                       <br>
+                <div class ="row">
+                     <div >
+                    <button type="submit" class="btn btn-default">Submit</button>
+                     </div>
+                </div>
             </form>
         </div>
 
