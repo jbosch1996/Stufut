@@ -64,8 +64,10 @@ public class NewMazo extends HttpServlet {
         Mazo m = new Mazo(0, nombremazo, 0, stusu, forma);
 
         if (miEjb.insertMazo(m)) {
+            Integer idmazo = m.getIdmazo();
             request.getSession(true).setAttribute("nombremazo", nombremazo);
-
+            request.getSession(true).setAttribute("idmazo", idmazo);
+            
             if (idformacion == 1) {
                 request.getRequestDispatcher("formacion1.jsp").forward(request, response);
             } else if (idformacion == 2) {

@@ -114,6 +114,10 @@ public class StufutEJB {
         return emf.createEntityManager().find(StufutUsuario.class, s);
     }
 
+    public Mazo selectMazoByIdmazo(Integer idmazo) {
+        return emf.createEntityManager().find(Mazo.class, idmazo);
+    }
+
     public Formacion selectFormacionByIdformacion(Integer id) {
         return emf.createEntityManager().find(Formacion.class, id);
     }
@@ -132,16 +136,12 @@ public class StufutEJB {
         }
         return false;
     }
-    
-       public List<Carta> selectAllCartas() {
+
+    public List<Carta> selectAllCartas() {
         return emf.createEntityManager().createNamedQuery("Carta.findAll").getResultList();
     }
 
-    public Mazo selectMazoByName(String m) {
-        return emf.createEntityManager().find(Mazo.class, m);
-    }
-    
-        public boolean insertMazoCarta(MazoCarta m) {
+    public boolean insertMazoCarta(MazoCarta m) {
 
         EntityManager em = emf.createEntityManager();
         em.persist(m);
@@ -149,6 +149,5 @@ public class StufutEJB {
         return true;
 
     }
-
 
 }

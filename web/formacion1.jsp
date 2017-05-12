@@ -29,7 +29,7 @@ and open the template in the editor.
             <h1>STUFUT</h1>
             <%
                 String un = (String) session.getAttribute("nombremazo");
-
+                Integer idmazo = (Integer) session.getAttribute("idmazo");
                 if (un != null) {
             %>
             <p><%=un%>4-3-3</p>
@@ -50,6 +50,7 @@ and open the template in the editor.
             <form action="AddPlayers" method="POST">
                  <input type="hidden" name="nombremazo" value="<%=un%>">
                 <div class="row">
+                    <input type="hidden" name="idmazo" value="<%=idmazo%>">
                     <label for="jugador1"><span class="glyphicon glyphicon-user"></span> Cartas</label>
                     <br>
                     <select name="jugador1">

@@ -41,8 +41,8 @@ public class AddPlayers extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String nombremazo = request.getParameter("nombremazo");
-        Mazo m = miEjb.selectMazoByName(nombremazo);
+        Integer idmazo = Integer.parseInt(request.getParameter("idmazo"));
+        Mazo m = miEjb.selectMazoByIdmazo(idmazo);
 
         Integer idmc = 0;
 

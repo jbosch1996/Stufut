@@ -89,10 +89,6 @@
                 <div class="modal-body">
                     <form action="NewUser" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="file"><span class="glyphicon glyphicon-user"></span> Foto</label>
-                            <input type="file" class="form-control" name="file"  required>
-                        </div>
-                        <div class="form-group">
                             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nombre de Usuario</label>
                             <input type="text" class="form-control" name="usrname" placeholder="Introduce Usuario" required>
                         </div>
