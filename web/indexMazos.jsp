@@ -54,7 +54,7 @@
                 for (Mazo mazo : mazos) {
             %>
             <tr>
-                <td><%= mazo.getNombre()%></td>
+                <td><form action="AllMazoCartas" method="POST"><input type="hidden" name="idmazocarta" value="<%= mazo.getIdmazo()%>"><button type="submit"><%= mazo.getNombre()%></button></form></td>
                 <td><%= mazo.getLikes()%></td>
                 <td><%= mazo.getNombreusu()%></td>
             </tr>

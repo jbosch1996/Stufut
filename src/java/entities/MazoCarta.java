@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "MazoCarta.findAll", query = "SELECT m FROM MazoCarta m"),
     @NamedQuery(name = "MazoCarta.findByIdmazocarta", query = "SELECT m FROM MazoCarta m WHERE m.idmazocarta = :idmazocarta"),
+    @NamedQuery(name = "MazoCarta.findByIdmazo", query = "SELECT m FROM MazoCarta m WHERE m.idmazo = :idmazo"),
     @NamedQuery(name = "MazoCarta.findByFechamazocarta", query = "SELECT m FROM MazoCarta m WHERE m.fechamazocarta = :fechamazocarta")})
 public class MazoCarta implements Serializable {
 
@@ -66,7 +67,6 @@ public class MazoCarta implements Serializable {
         this.idmazo = idmazo;
     }
 
-    
     public MazoCarta(Integer idmazocarta) {
         this.idmazocarta = idmazocarta;
     }
@@ -136,5 +136,5 @@ public class MazoCarta implements Serializable {
     public String toString() {
         return "entities.MazoCarta[ idmazocarta=" + idmazocarta + " ]";
     }
-    
+
 }

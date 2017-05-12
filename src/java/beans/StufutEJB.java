@@ -105,6 +105,14 @@ public class StufutEJB {
     public List<Mazo> selectAllMazo() {
         return emf.createEntityManager().createNamedQuery("Mazo.findAll").getResultList();
     }
+    
+    public List<MazoCarta> selectAllMazoCartaByIdmazo(Integer id) {
+//        EntityManager em = emf.createEntityManager();
+//        List<MazoCarta> cartas = em.createNamedQuery("MazoCarta.findByIdmazo").setParameter("idmazo", id).getResultList();
+//        return cartas;
+        return emf.createEntityManager().createNamedQuery("MazoCarta.findByIdmazo").setParameter("idmazo", id).getResultList();
+    }
+    
 
     public List<Formacion> selectAllFormaciones() {
         return emf.createEntityManager().createNamedQuery("Formacion.findAll").getResultList();
