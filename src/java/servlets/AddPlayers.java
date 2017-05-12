@@ -94,7 +94,7 @@ public class AddPlayers extends HttpServlet {
         miEjb.insertMazoCarta(mc11);
         
         
-        
+        request.getRequestDispatcher("index.jsp").forward(request, response);
        
         
 

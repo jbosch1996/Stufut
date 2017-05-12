@@ -27,7 +27,8 @@
             }
         </style>
         <div class="jumbotron text-center"> 
-            <h1>STUFUT</h1>  
+            <h1>STUFUT</h1> 
+            </div>
             <%
                 String un = (String) session.getAttribute("usrname");
                 if (un != null) {
@@ -41,8 +42,6 @@
             <form action="CerrarSesion" method="POST">
                 <button type="submit" class="btn btn-success">Logout</button>
             </form>
-        </div>
-
         <h1>Listado de Equipos</h1>
         <table>
             <tr>
