@@ -122,7 +122,7 @@
             %>
              <figure class="snip1571"><img src="http://cx.comunidadxbox.com/wp-content/imagenes/FUT_Primaryhero-bg-md.jpg" alt="sample103" />
   <figcaption>
-      <h3>Nombre: <%= carta.getNombre() %><br>Media: <%= carta.getMedia() %></h3>
+      <h3>Nombre: <%= carta.getNombre() %><br>Media: <%= carta.getMedia() %><br>Posicion: <%= carta.getPosicion() %></h3>
   </figcaption>
   <a href="#"></a>
 </figure>   

@@ -94,7 +94,7 @@ and open the template in the editor.
                             <label for="tipo"><span class="glyphicon glyphicon-eye-open"></span> Tipo</label>
                             <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Introduce el Tipo">
                         </div>-->
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default">Siguiente</button>
                     </form>
                 </div>
                 <div class="modal-footer">

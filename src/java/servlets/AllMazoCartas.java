@@ -40,8 +40,8 @@ public class AllMazoCartas extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Integer idmazocarta = Integer.parseInt(request.getParameter("idmazocarta"));
-        List<MazoCarta> mazocarta = miEjb.selectAllMazoCartaByIdmazo(idmazocarta);
-        request.setAttribute("mazoscarta", mazocarta);
+        Mazo mazocarta = miEjb.selectMazoByIdmazo(idmazocarta);
+        request.setAttribute("mazoscarta", mazocarta.getMazoCartaCollection());
         request.getRequestDispatcher("/cartasMazo.jsp").forward(request, response);
     }
 

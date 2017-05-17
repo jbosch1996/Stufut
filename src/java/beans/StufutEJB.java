@@ -26,12 +26,6 @@ public class StufutEJB {
     @PersistenceUnit
     EntityManagerFactory emf;
 
-    // validar usuario 
-    // recibe 2 string, user y pass
-    // trae al usuario por nombre de usua
-    // si el usuario q trae es null devuelve falso
-    // sino comparas pass con el pass del usuario
-    // si es correcto true y sino false
     public boolean loginUser(String nombreusu, String pass) {
         EntityManager em = emf.createEntityManager();
         StufutUsuario encontrada = em.find(StufutUsuario.class, nombreusu);
@@ -107,9 +101,6 @@ public class StufutEJB {
     }
     
     public List<MazoCarta> selectAllMazoCartaByIdmazo(Integer id) {
-//        EntityManager em = emf.createEntityManager();
-//        List<MazoCarta> cartas = em.createNamedQuery("MazoCarta.findByIdmazo").setParameter("idmazo", id).getResultList();
-//        return cartas;
         return emf.createEntityManager().createNamedQuery("MazoCarta.findByIdmazo").setParameter("idmazo", id).getResultList();
     }
     
