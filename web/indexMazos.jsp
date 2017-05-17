@@ -43,6 +43,7 @@
                 <button type="submit" class="btn btn-success">Logout</button>
             </form>
         <h1>Listado de Equipos</h1>
+        
         <table>
             <tr>
                 <th>Nombre</th>
@@ -56,7 +57,7 @@
             <tr>
                 <td><form action="AllMazoCartas" method="POST"><input type="hidden" name="idmazocarta" value="<%= mazo.getIdmazo()%>"><button type="submit"><%= mazo.getNombre()%></button></form></td>
                 <td><%= mazo.getLikes()%></td>
-                <td><%= mazo.getNombreusu()%></td>
+                <td><%= mazo.getNombreusu().getNombreusu()%></td>
             </tr>
         <% }
         %>

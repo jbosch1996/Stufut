@@ -87,7 +87,7 @@
                     <h4 class="modal-title">Registro</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="NewUser" method="POST" enctype="multipart/form-data">
+                    <form action="NewUser" method="POST">
                         <div class="form-group">
                             <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nombre de Usuario</label>
                             <input type="text" class="form-control" name="usrname" placeholder="Introduce Usuario" required>
